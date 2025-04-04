@@ -1,8 +1,6 @@
 pub fn closest_note_with_octave(frequency: f32) -> (String, i32) {
     
     let notes = [
-        //Hz dla nut w najniższej oktawie
-        // Ze strony MixButton
         ("C", 16.35),
         ("C#", 17.32),
         ("D", 18.35),
@@ -21,9 +19,9 @@ pub fn closest_note_with_octave(frequency: f32) -> (String, i32) {
     let mut closest_octave = 0;
     let mut min_difference = f32::MAX;
 
-    for octave in 0..=8 { // Zakres oktaw, wyżej i niżej jest poza ludzkim uchem
+    for octave in 0..=8 {
         for &(note, base_frequency) in &notes {
-            let adjusted_frequency = base_frequency * 2f32.powi(octave); // Częstotliwość nuty w danej oktawie
+            let adjusted_frequency = base_frequency * 2f32.powi(octave);
             let difference = (frequency - adjusted_frequency).abs();
             if difference < min_difference {
                 min_difference = difference;
